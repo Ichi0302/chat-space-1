@@ -35,12 +35,12 @@ has_many :usergroups
 has_many :users, through: :usergroups   
 
 ---
-##usergroupsテーブル
+##groupusersテーブル
 | column   | type        | option         |
 |:---------|:------------|:---------------|
 | group_id | references  |                |
 | user_id  | references  |                |
 
 ###Association
-belongs_to :user   
 belongs_to :group   
+belongs_to :user   
