@@ -1,17 +1,12 @@
 #DB
 
 ##messagesテーブル
-###Columns
-- text(text)
-- image(string)
-- group_id(references)
-- user_id(references)
-
-####NULLNOT
-text
-
-####INDEX
-text
+| column   | type        | option         |
+|:---------|:------------|:---------------|
+| text     | text        | NULLNOT, INDEX |
+| image    | string      |                |
+| group_id | references  |                |
+| user_id  | references  |                |
 
 ###Association
 belongs_to :user   
@@ -19,14 +14,9 @@ belongs_to :group
 
 ---
 ##usersテーブル
-###Column
-- name(string)
-
-####NULLNOT
-name
-
-####INDEX
-name
+| column   | type    | option         |
+|:---------|:--------|:---------------|
+| name     | string  | NULLNOT, INDEX |
 
 ###Association
 has_many :messages   
@@ -35,14 +25,9 @@ has_many :groups, through: :usergroups
 
 ---
 ##groupsテーブル
-###Column
-- name(string)
-
-####NULLNOT
-name
-
-####INDEX
-name
+| column   | type    | option         |
+|:---------|:--------|:---------------|
+| name     | string  | NULLNOT, INDEX |
 
 ###Association
 has_many :messages   
@@ -51,9 +36,10 @@ has_many :users, through: :usergroups
 
 ---
 ##usergroupsテーブル
-###Column
-- user_id(references)
-- group_id(references)
+| column   | type        | option         |
+|:---------|:------------|:---------------|
+| group_id | references  |                |
+| user_id  | references  |                |
 
 ###Association
 belongs_to :user   
