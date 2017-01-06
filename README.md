@@ -1,24 +1,60 @@
-# README
+#DB
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##messagesテーブル
+###Columns
+*text(text)
+*image(string)
+*group_id(references)
+*user_id(references)
 
-Things you may want to cover:
+####NULLNOT
+text
 
-* Ruby version
+####INDEX
+text
 
-* System dependencies
+###Association
+belongs_to :user
+belongs_to :group
 
-* Configuration
+---
+##usersテーブル
+###Column
+*name(string)
 
-* Database creation
+####NULLNOT
+name
 
-* Database initialization
+####INDEX
+name
 
-* How to run the test suite
+###Association
+has_many :messages
+has_many :usergroups
+has_many :groups, through: :usergroups
 
-* Services (job queues, cache servers, search engines, etc.)
+---
+##groupsテーブル
+###Column
+*name(string)
 
-* Deployment instructions
+####NULLNOT
+name
 
-* ...
+####INDEX
+name
+
+###Association
+has_many :messages
+has_many :usergroups
+has_many :users, through: :usergroups
+
+---
+##usergroupsテーブル
+###Column
+*user_id(references)
+*group_id(references)
+
+###Association
+belongs_to :user
+belongs_to :group
