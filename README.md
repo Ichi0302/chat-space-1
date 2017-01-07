@@ -3,7 +3,7 @@
 ##messagesテーブル
 | column   | type        | option         |
 |:---------|:------------|:---------------|
-| text     | text        | NULLNOT, INDEX |
+| text     | text        | NULLNOT        |
 | image    | string      |                |
 | group_id | references  |                |
 | user_id  | references  |                |
@@ -20,19 +20,19 @@ belongs_to :group
 
 ###Association
 has_many :messages   
-has_many :usergroups   
-has_many :groups, through: :usergroups   
+has_many :groupusers   
+has_many :groups, through: :groupusers   
 
 ---
 ##groupsテーブル
 | column   | type    | option         |
 |:---------|:--------|:---------------|
-| name     | string  | NULLNOT, INDEX |
+| name     | string  | NULLNOT        |
 
 ###Association
 has_many :messages   
-has_many :usergroups   
-has_many :users, through: :usergroups   
+has_many :groupusers   
+has_many :users, through: :groupusers   
 
 ---
 ##groupusersテーブル
