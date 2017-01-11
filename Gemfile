@@ -21,6 +21,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
+gem 'font-awesome-rails'
 
 
 group :development, :test do
