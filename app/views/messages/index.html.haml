@@ -1,0 +1,60 @@
+.contents
+  .contents-side
+    .contents-side-user
+      .contents-side-user__name sumizaki
+      .contents-side-user__action
+        %i.fa.fa-pencil-square-o
+        %i.fa.fa-gear
+
+    %ul.contents-side-groups
+      %li.contents-side-group
+        .contents-side-group__name sample
+        .contents-side-group__message test
+      %li.contents-side-group
+        .contents-side-group__name sample2
+        .contents-side-group__message まだメッセージはありません。
+      %li.contents-side-group
+        .contents-side-group__name sample3
+        .contents-side-group__message まだメッセージはありません。
+      %li.contents-side-group
+        .contents-side-group__name sample4
+        .contents-side-group__message まだメッセージはありません。
+
+  .contents-main
+    .contents-main-header
+      .contents-main-header__group sample
+      .contents-main-header__members Members: sumizaki zak aaa bbb
+      .contents-main-header__edit edit
+
+    .contents-main-body
+      %ul.contents-main-body-messages
+        %li.contents-main-body-message
+          .contents-main-body-message__user sumizaki
+          .contents-main-body-message__time 2017/01/15 09:15:08
+          .contents-main-body-message__message test
+        %li.contents-main-body-message
+          .contents-main-body-message__user sumizaki
+          .contents-main-body-message__time 2017/01/15 10:15:08
+          .contents-main-body-message__message hello
+        %li.contents-main-body-message
+          .contents-main-body-message__user zak
+          .contents-main-body-message__time 2017/01/15 11:15:08
+          .contents-main-body-message__message hello world
+        %li.contents-main-body-message
+          .contents-main-body-message__user aaa
+          .contents-main-body-message__time 2017/01/15 12:15:08
+          .contents-main-body-message__message sample
+        %li.contents-main-body-message
+          .contents-main-body-message__user bbb
+          .contents-main-body-message__time 2017/01/15 13:15:08
+          .contents-main-body-message__message hi!
+        %li.contents-main-body-message
+          .contents-main-body-message__user sumizaki
+          .contents-main-body-message__time 2017/01/16 10:00:11
+          .contents-main-body-message__message test
+
+    .contents-main-footer
+      .contents-main-footer__body
+        %textarea{ style: "font-size:16px;", rows: "1", placeholder: "type a message"}
+      .fa.fa-image
+      %input{type: "submit", value: "Send"}
