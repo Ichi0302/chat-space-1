@@ -1,3 +1,8 @@
+$white: #fff;
+$skyblue: #38aef4;
+$thin-gray: #999;
+$font-black: #434a54;
+
 html, body {
   height: 100%;
   background-color: #fafafa;
@@ -18,7 +23,7 @@ html, body {
     @include clearfix();
     height: 60px;
     padding: 20px;
-    color: #fff;
+    color: $white;
     background-color: #253141;
 
     h5 {
@@ -37,7 +42,7 @@ html, body {
         display: inline-block;
         margin: 15px 0 15px 3px;
         line-height: 28px;
-        color: #fff;
+        color: $white;
         font-size: 20px;
       }
   }
@@ -45,7 +50,7 @@ html, body {
   &-groups {
     margin: 0;
     padding: 0;
-    color: #fff;
+    color: $white;
   }
 
   &-group {
@@ -53,7 +58,7 @@ html, body {
     &__link {
       display: block;
       padding: 20px;
-      color: #fff;
+      color: $white;
     }
 
       &__name {
@@ -77,7 +82,7 @@ html, body {
     &-header {
       @include clearfix();
       padding: 0 40px;
-      background-color: #fff;
+      background-color: $white;
       border-bottom: 1px solid #eee;
 
       &--left {
@@ -95,7 +100,7 @@ html, body {
 
         p {
           font-size: 12px;
-          color: #999;
+          color: $thin-gray;
           margin-bottom: 10px;
         }
 
@@ -112,8 +117,8 @@ html, body {
           line-height: 40px;
           margin: 28px 0;
           padding: 0 20px;
-          border: 2px solid #38aef4;
-          color: #38aef4;
+          border: 2px solid $skyblue;
+          color: $skyblue;
           font-size: 14px;
         }
     }
@@ -138,20 +143,20 @@ html, body {
               float: left;
               font-size: 16px;
               font-weight: bold;
-              color: #434a54;
+              color: $font-black;
               padding-right: 10px;
             }
 
             &__time {
               float: left;
               font-size: 12px;
-              color: #999;
+              color: $thin-gray;
               line-height: 24px;
             }
 
           &__body {
             font-size: 14px;
-            color: #434a54;
+            color: $font-black;
           }
         }
 
@@ -207,8 +212,8 @@ html, body {
           width: 100px;
           margin-left: 15px;
           line-height: 50px;
-          color: #fff;
-          background-color: #38aef0;
+          color: $white;
+          background-color: $skyblue;
           text-align: center;
           border: none;
           padding: 0;
