@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(update_action)
+    current_user.update(update_params)
   end
 
   private
-  def update_action
-    params.require(:user).permit(:name, :email, :encrypted_password)
+  def update_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
