@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(update_params)
+    user = User.find(params[:id])
+    user.update(update_params)
   end
 
   private
