@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if user.update(update_params)
-
+      render 'messages/index'
     else
       redirect_to controller: :users, action: :edit
     end
