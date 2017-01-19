@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if user.update(update_params)
 
     else
-      render 'edit'
+      redirect_to controller: :users, action: :edit
     end
   end
 
