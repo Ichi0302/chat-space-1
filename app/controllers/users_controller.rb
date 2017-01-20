@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    if user.update(update_params)
-      render 'messages/index'
+    @user = User.find(params[:id])
+    if @user.update(update_params)
+      redirect_to root_path
     else
-      redirect_to controller: :users, action: :edit
+      render 'edit'
     end
   end
 
