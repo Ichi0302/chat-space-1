@@ -5,10 +5,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(update_params)
+    if @user.update_with_password(update_params)
       redirect_to root_path
     else
-      render 'edit'
+      render action: :edit
     end
   end
 
