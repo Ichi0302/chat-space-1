@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_with_password(update_params)
-      redirect_to root_path
+      redirect_to root_path, notice: 'アカウント情報を変更しました'
     else
-      render action: :edit
+      render action: :edit, alert: 'アカウント情報を変更できませんでした'
     end
   end
 
