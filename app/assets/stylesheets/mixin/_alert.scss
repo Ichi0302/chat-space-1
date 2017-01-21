@@ -1,0 +1,14 @@
+.alert {
+  color: $white;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+
+    &-notice {
+      background-color: $skyblue;
+    }
+
+    &-alert {
+      background-color: #d65f4c;
+    }
+}
