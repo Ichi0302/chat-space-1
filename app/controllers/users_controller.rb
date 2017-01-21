@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     if @user.update_with_password(update_params)
       redirect_to root_path, notice: 'アカウント情報を変更しました'
     else
-      render action: :edit, alert: 'アカウント情報を変更できませんでした'
+      flash.alert = 'アカウント情報を変更できませんでした'
+      render :edit
     end
   end
 
