@@ -12,6 +12,9 @@ gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
+gem 'rspec-rails', "~> 3.5.0"
+gem 'factory_girl_rails', "~> 4.4.1"
+gem 'faker'
 
 # Haml適応
 gem 'haml-rails'
