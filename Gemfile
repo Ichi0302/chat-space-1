@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'rspec-rails', "~> 3.5.0"
 gem 'factory_girl_rails', "~> 4.4.1"
+gem 'faker'
 
 # Haml適応
 gem 'haml-rails'
