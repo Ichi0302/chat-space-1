@@ -1,0 +1,26 @@
+= form_for(group) do |f|
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :グループ名, class: "chat-group-form__field--label", id: "chat_group_name"
+    .chat-group-form__field--right
+      = f.text_field :name, placeholder: "グループ名を入力してください", class: "chat-group-form__field--input", id: "chat_group_name", value: @group.name, type: "text"
+  / .chat-group-form__field.clearfix
+  /   .chat-group-form__field--left
+  /     = f.label :チャットメンバーを追加, class: "chat-group-form__field--label", id: "chat_group_チャットメンバーを追加"
+  /   .chat-group-form__field--right
+  /     .chat-group-form__search.clearfix
+  /     = f.text_field :name, placeholder: "追加したいユーザー名を入力してください", class: "chat-group-form__field--input", id: "user-search-field", type: "text"
+  /     #user-search-result
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :チャットメンバー, class: "chat-group-form__field--label", id: "chat-group_チャットメンバー"
+    .chat-group-form__field--right
+      #chat-group-users
+        .chat-group-user.clearfix#chat-group-user-22
+          %p.chat-group-user__name
+            = collection_check_boxes(:group, :user_ids, User.all, :id, :name ) do |f|
+              = f.label{ f.check_box + f.text }
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+    .chat-group-form__field--right
+      = f.submit :Save, class: "chat-group-form__action-btn"
