@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :find_params, only: [:edit, :update]
+  before_action :set_group, only: [:edit, :update]
 
   def new
     @group = Group.new
@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    if @group.update(update_params)
+    if @group.update(create_params)
       redirect_to root_path, notice: 'チャットグループが更新されました。'
     else
       flash.alert = 'チャットグループが更新できませんでした。'
@@ -33,11 +33,7 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name)
   end
 
-  def update_params
-    params.require(:group).permit(:name)
-  end
-
-  def find_params
+  def set_group
     @group = Group.find(params[:id])
   end
 
