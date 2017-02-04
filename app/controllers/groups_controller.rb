@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(create_params)
+    @group = Group.new(group_params)
     if @group.save
       redirect_to root_path, notice: 'チャットグループが作成されました。'
     else
@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    if @group.update(create_params)
+    if @group.update(group_params)
       redirect_to root_path, notice: 'チャットグループが更新されました。'
     else
       flash.alert = 'チャットグループが更新できませんでした。'
@@ -29,7 +29,7 @@ class GroupsController < ApplicationController
 
   private
 
-  def create_params
+  def group_params
     params.require(:group).permit(:name)
   end
 
