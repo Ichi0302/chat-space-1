@@ -4,15 +4,16 @@
   .chat-main
     .chat-header
       .chat-header--left
-        %h2 sample
+        %h2
+          = @group.name
         %p.chat-header__users
           Members:
-          %span.chat-header__user sumizaki
-          %span.chat-header__user zak
-          %span.chat-header__user aaa
-          %span.chat-header__user bbb
+          - @group.users.each do |user|
+            %span.chat-header__user
+              = user.name
+
       .chat-header--right
-        %a.chat-header__edit-btn Edit
+        = link_to 'Edit', edit_group_path(@group), class: "chat-header__edit-btn"
 
     .chat-body
       %ul.chat-messages
