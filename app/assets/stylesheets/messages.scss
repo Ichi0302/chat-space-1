@@ -54,6 +54,10 @@ html, body {
       display: block;
       padding: 20px;
       color: $white;
+
+      &:hover {
+        background-color: #394b63;
+      }
     }
 
       &__name {
