@@ -1,0 +1,32 @@
+.chat
+  = render partial: "side", locals: { groups: @groups }
+
+  .chat-main
+    .chat-header
+      .chat-header--left
+        %h2 sample
+        %p.chat-header__users
+          Members:
+          %span.chat-header__user sumizaki
+          %span.chat-header__user zak
+          %span.chat-header__user aaa
+          %span.chat-header__user bbb
+      .chat-header--right
+        %a.chat-header__edit-btn Edit
+
+    .chat-body
+      %ul.chat-messages
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__user sumizaki
+            %p.chat-message__time 2017/01/15 09:15:08
+          %p.chat-message__body test
+
+    .chat-footer
+      %form.new_message{ action: "", method: "post"}
+        .chat-footer__body
+          %textarea#message_body{ name: "message[body]", placeholder: "type a message"}
+          %label.chat-footer__body__file
+            %input#message_image{ name: "message[image]", type: "file"}
+            %i.fa.fa-image
+        %input.submit_btn{type: "submit", value: "Send"}
