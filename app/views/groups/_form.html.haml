@@ -1,7 +1,7 @@
 .chat-group-form
-  - if controller.controller_name == 'groups' && controller.action_name == 'new'
+  - if current_page?(action: :new)
     %h1 新規チャットグループ
-  - elsif controller.controller_name == 'groups' && controller.action_name == 'edit'
+  - else
     %h1 チャットグループ編集
   = form_for(group) do |f|
     .chat-group-form__field.clearfix
