@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
   end
 
   private
+
   def create_params
     params.require(:group).permit(:name)
   end
@@ -39,4 +40,5 @@ class GroupsController < ApplicationController
   def find_params
     @group = Group.find(params[:id])
   end
+
 end
