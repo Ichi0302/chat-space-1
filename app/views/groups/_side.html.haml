@@ -10,7 +10,7 @@
 
   %ul.chat-groups
     - groups.each do |group|
-      = link_to group_path(group), class: "chat-group__link" do
+      = link_to group_messages_path(group), class: "chat-group__link" do
         %li.chat-group
           %p.chat-group__name
             = group.name
