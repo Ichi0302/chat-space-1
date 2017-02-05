@@ -17,10 +17,6 @@ class MessagesController < ApplicationController
 
   private
 
-  def create_params
-    params.require(:message).permit(:text).merge(group_id: params[:group_id], user_id: current_user.id)
-  end
-
   def set_group
     @groups = current_user.groups
     @group = Group.find(params[:group_id])
@@ -28,6 +24,10 @@ class MessagesController < ApplicationController
 
   def set_messages
     @messages = @group.messages
+  end
+
+  def create_params
+    params.require(:message).permit(:text).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 
 end
