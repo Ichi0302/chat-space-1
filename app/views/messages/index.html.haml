@@ -1,43 +1,17 @@
 .chat
-  .chat-side
-    .chat-user
-      %h5 sumizaki
-      .chat-user__actions
-        = link_to new_group_path, class: "chat-user__action" do
-          %i.fa.fa-pencil-square-o
-        = link_to edit_user_path(current_user), class: "chat-user__action" do
-          %i.fa.fa-gear
-
-    %ul.chat-groups
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name sample
-          %p.chat-group__message test
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name sample2
-          %p.chat-group__message まだメッセージはありません。
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name sample3
-          %p.chat-group__message まだメッセージはありません。
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name sample4
-          %p.chat-group__message まだメッセージはありません。
+  = render partial: "groups/side", locals: { groups: @groups }
 
   .chat-main
     .chat-header
       .chat-header--left
-        %h2 sample
+        %h2
+          = @group.name
         %p.chat-header__users
           Members:
-          %span.chat-header__user sumizaki
-          %span.chat-header__user zak
-          %span.chat-header__user aaa
-          %span.chat-header__user bbb
+          = render @group.users
+
       .chat-header--right
-        %a.chat-header__edit-btn Edit
+        = link_to 'Edit', edit_group_path(@group), class: "chat-header__edit-btn"
 
     .chat-body
       %ul.chat-messages
@@ -45,31 +19,6 @@
           .chat-message__header
             %p.chat-message__user sumizaki
             %p.chat-message__time 2017/01/15 09:15:08
-          %p.chat-message__body test
-        %li.chat-message
-          .chat-message__header
-            %p.chat-message__user sumizaki
-            %p.chat-message__time 2017/01/15 10:15:08
-          %p.chat-message__body hello
-        %li.chat-message
-          .chat-message__header
-            %p.chat-message__user zak
-            %p.chat-message__time 2017/01/15 11:15:08
-          %p.chat-message__body hello world
-        %li.chat-message
-          .chat-message__header
-            %p.chat-message__user aaa
-            %p.chat-message__time 2017/01/15 12:15:08
-          %p.chat-message__body sample
-        %li.chat-message
-          .chat-message__header
-            %p.chat-message__user bbb
-            %p.chat-message__time 2017/01/15 13:15:08
-          %p.chat-message__body hi!
-        %li.chat-message
-          .chat-message__header
-            %p.chat-message__user sumizaki
-            %p.chat-message__time 2017/01/16 09:15:08
           %p.chat-message__body test
 
     .chat-footer
