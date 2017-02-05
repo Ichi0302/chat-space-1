@@ -54,9 +54,11 @@ html, body {
       display: block;
       padding: 20px;
       color: $white;
+      text-decoration: none;
 
       &:hover {
         background-color: #394b63;
+        text-decoration: none;
       }
     }
 

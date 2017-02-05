@@ -3,4 +3,7 @@
     %p.chat-group__name
       = group.name
     %p.chat-group__message
-      = group.messages.find_by(group_id: group.id)
+      - if group.messages.exists?
+        = group.messages.last.text
+      - else
+        まだメッセージはありません。
