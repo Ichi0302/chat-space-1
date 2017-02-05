@@ -8,8 +8,7 @@
           = @group.name
         %p.chat-header__users
           Members:
-          - @group.users.each do |user|
-            = render partial: "main_users", locals: { user: user }
+          = render @group.users
 
       .chat-header--right
         = link_to 'Edit', edit_group_path(@group), class: "chat-header__edit-btn"

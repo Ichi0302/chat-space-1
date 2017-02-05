@@ -9,5 +9,4 @@
         %i.fa.fa-gear
 
   %ul.chat-groups
-    - groups.each do |group|
-      = render partial: "groups/side_groups", locals: { group: group }
+    = render groups
