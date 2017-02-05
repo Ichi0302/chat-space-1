@@ -2,4 +2,5 @@
   %li.chat-group
     %p.chat-group__name
       = group.name
-    %p.chat-group__message messages
+    %p.chat-group__message
+      = group.messages.find_by(group_id: group.id)
