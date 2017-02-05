@@ -15,11 +15,7 @@
 
     .chat-body
       %ul.chat-messages
-        %li.chat-message
-          .chat-message__header
-            %p.chat-message__user sumizaki
-            %p.chat-message__time 2017/01/15 09:15:08
-          %p.chat-message__body test
+        = render @messages
 
     .chat-footer
       %form.new_message{ action: "", method: "post"}
