@@ -5,7 +5,7 @@ class Group < ApplicationRecord
 
   validates :name, presence: true
 
-  def group_message
-    messages.try(:last).try(:text) || "まだメッセージはありません。"
+  def latest_message
+    messages.last.try(:text) || "まだメッセージはありません。"
   end
 end
