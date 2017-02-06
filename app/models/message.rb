@@ -4,7 +4,7 @@ class Message < ApplicationRecord
 
   validates :text, presence: true
 
-  def latest_time
-    created_at.to_s
+  def message_time
+    created_at.to_s(:default)
   end
 end
