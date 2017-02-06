@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
   end
 
   def set_messages
-    @messages = @group.messages
+    @messages = @group.messages.includes(:user)
   end
 
   def create_params
