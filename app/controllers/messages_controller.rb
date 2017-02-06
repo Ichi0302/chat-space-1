@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = @group.messages.build(create_params)
+    @message = current_user.messages.new(create_params)
     if @message.save
       redirect_to group_messages_path(@group)
     else
@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
   end
 
   def create_params
-    params.require(:message).permit(:text).merge(user_id: current_user.id)
+    params.require(:message).permit(:text).merge(group_id: params[:group_id])
   end
 
 end
