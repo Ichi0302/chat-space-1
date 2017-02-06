@@ -15,17 +15,13 @@
 
     .chat-body
       %ul.chat-messages
-        %li.chat-message
-          .chat-message__header
-            %p.chat-message__user sumizaki
-            %p.chat-message__time 2017/01/15 09:15:08
-          %p.chat-message__body test
+        = render @messages
 
     .chat-footer
-      %form.new_message{ action: "", method: "post"}
+      = form_for [@group, @message] do |f|
         .chat-footer__body
-          %textarea#message_body{ name: "message[body]", placeholder: "type a message"}
+          = f.text_field :text, placeholder: "type a message", class: "chat-footer__body--textarea", id: "chat-group_name"
           %label.chat-footer__body__file
             %input#message_image{ name: "message[image]", type: "file"}
             %i.fa.fa-image
-        %input.submit_btn{type: "submit", value: "Send"}
+        = f.submit :Send, class: "chat-group-form__action-btn"
