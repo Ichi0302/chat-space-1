@@ -5,7 +5,7 @@ FactoryGirl.define do
     image        "test image"
     user_id       1
     group_id      1
-    Faker::Time.between(DateTime.now - 1, DateTime.now)
+    created_at { Faker::Time.between(2.days.ago, Time.now, :all) }
   end
 
 end
