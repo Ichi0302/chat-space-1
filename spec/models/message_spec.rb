@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Message do
-  describe '#create' do
+  describe 'sending a message' do
 
     it "is valid with a text" do
       message = build(:message)
