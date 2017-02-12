@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(create_params)
     if @message.save
       respond_to do |format|
-        format.any
+        format.html { redirect_to group_messages_path(@group) }
         format.json { render json: { name: @message.user.name, time: @message.message_time, text: @message.text } }
       end
     else
