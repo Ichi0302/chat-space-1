@@ -28,7 +28,7 @@ $(function() {
       textField.val('');
     })
     .fail(function() {
-      alert('error');
+      alert('メッセージを入力してください。');
     });
   });
 });
