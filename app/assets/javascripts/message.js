@@ -14,7 +14,7 @@ $(function() {
     var message = textField.val();
     $.ajax({
       type: 'POST',
-      url: './messages.json',
+      url: './messages',
       data: {
         message: {
           text: message
