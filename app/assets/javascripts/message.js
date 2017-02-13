@@ -21,7 +21,7 @@ $(function() {
     .done(function(data) {
       var html = buildHTML(data);
       $('.chat-messages').append(html);
-      textField.val('');
+      $('#new-message')[0].reset();
     })
     .fail(function() {
       alert('メッセージを入力してください。');
