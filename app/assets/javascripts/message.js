@@ -26,5 +26,6 @@ $(function() {
     .fail(function() {
       alert('メッセージを入力してください。');
     });
+    return false;
   });
 });
