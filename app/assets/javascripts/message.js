@@ -8,7 +8,7 @@ $(function() {
     return html;
   }
 
-  $('.new-message').on("submit", function(e) {
+  $('#new-message').on("submit", function(e) {
     e.preventDefault();
     var textField = $('.chat-footer__body--textarea');
     var message = textField.val();
