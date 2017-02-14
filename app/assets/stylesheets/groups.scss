@@ -79,6 +79,7 @@
     line-height: 50px;
     font-size: 14px;
     border-bottom: 1px solid #ddd;
+    list-style: none;
 
     &__name {
       float: left;
@@ -89,11 +90,11 @@
       display: inline-block;
       cursor: pointer;
 
-      &__btn--add {
+      &--add {
         color: #38aef0;
       }
 
-      &__btn--remove {
+      &--remove {
         color: #f05050;
       }
     }
