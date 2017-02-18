@@ -23,7 +23,10 @@
         = f.label :チャットメンバー, class: "chat-group-form__field--label", id: "chat-group_チャットメンバー"
       .chat-group-form__field--right
         %ul.chat-group-user
-          = render partial: 'groups/user', collection: group.users
+          %li.chat-group-user
+            %p.chat-group-user__name
+              = current_user.name
+          = render partial: 'groups/user', collection: group.users.where.not(id: current_user.id)
 
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
