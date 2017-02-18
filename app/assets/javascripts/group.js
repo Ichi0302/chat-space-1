@@ -1,23 +1,22 @@
 $(function() {
-  $('#user-search-field').on("keyup", function(e) {
-    e.preventDefault();
+  $('#user-search-field').on("keyup", function() {
     AjaxSearch();
   });
 });
 
 function buildAddingList(user) {
-  var list = `<div class="chat-group-user", id="adding-user">
-                  <p class="chat-group-user__name">${ user.name }</p>
-                  <a class="chat-group-user__btn"><div class="chat-group-user__btn--add">追加</div></p>
-                </div>`;
+  var list = `<div class="adding-group-user">
+                  <p class="adding-group-user__name">${ user.name }</p>
+                  <a class="adding-group-user__btn">追加</a>
+              </div>`;
   return list;
 }
 
 function buildAddedList(user) {
   var list = `<li class="chat-group-user">
                   <p class="chat-group-user__name">${ user.name }</p>
-                  <a class="chat-group-user__btn"><div class="chat-group-user__btn--remove">削除</div></p>
-                </li>`;
+                  <a class="chat-group-user__btn">削除</a>
+              </li>`;
   return list;
 }
 
@@ -30,7 +29,8 @@ function AjaxSearch() {
     dataType: 'json'
   })
   .done(function(data) {
-    $("#adding-user").remove();
+    console.log("hey");
+    $(".adding-group-user").remove();
     if (keyword.length !== 0) {
       $.each(data, function(i, user) {
         var list = buildAddingList(user);
