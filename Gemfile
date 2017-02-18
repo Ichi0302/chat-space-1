@@ -21,7 +21,6 @@ gem 'erb2haml'
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
-gem 'jquery-turbolinks'
 gem 'turbolinks', '~> 5'
 gem 'font-awesome-rails'
 
