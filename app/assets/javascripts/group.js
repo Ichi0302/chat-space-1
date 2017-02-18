@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   $('#user-search-field').on("keyup", function() {
     AjaxSearch();
   });
@@ -29,7 +29,6 @@ function AjaxSearch() {
     dataType: 'json'
   })
   .done(function(data) {
-    console.log("hey");
     $(".adding-group-user").remove();
     if (keyword.length !== 0) {
       $.each(data, function(i, user) {
