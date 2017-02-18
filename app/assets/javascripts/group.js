@@ -31,7 +31,7 @@ function AjaxSearch() {
   .done(function(data) {
     $(".adding-group-user").remove();
     if (keyword.length !== 0) {
-      $.each(data, function(i, user) {
+      $.each(data.users, function(i, user) {
         var list = buildAddingList(user);
         $('#user-search-result').append(list);
       });
