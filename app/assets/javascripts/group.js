@@ -2,18 +2,19 @@ $(document).on('turbolinks:load', function() {
   $('#user-search-field').on("keyup", function() {
     AjaxSearch();
   });
-  $(document).on("click", '.adding-group-user__btn', function() {
+  $('.chat-group-form').on("click", '.adding-group-user__btn', function() {
     var user = $(this).parent();
     AddingUser(user);
   });
-  $(document).on("click", '.chat-group-user__btn', function() {
+  $('.chat-group-form').on("click", '.chat-group-user__btn', function() {
     var user = $(this).parent();
     RemoveUser(user);
   });
 });
 
+
 function buildAddingList(user) {
-  var list = `<div class="adding-group-user" data-id="${user.id}" data-name="${user.name}">
+  var list = `<div class="adding-group-user" data-id="${ user.id }" data-name="${ user.name }">
                 <p class="adding-group-user__name">${ user.name }</p>
                 <a class="adding-group-user__btn">追加</a>
               </div>`;
@@ -21,8 +22,8 @@ function buildAddingList(user) {
 }
 
 function buildAddedList(id, name) {
-  var list = `<li class="chat-group-user" data-id="${id}"><input type="hidden" name="group[user_ids][]" value="${id}" />
-                <p class="chat-group-user__name">${name}</p>
+  var list = `<li class="chat-group-user"><input type="hidden" name="group[user_ids][]" value="${ id }" />
+                <p class="chat-group-user__name">${ name }</p>
                 <a class="chat-group-user__btn">削除</a>
               </li>`;
   return list;
