@@ -2,9 +2,11 @@ $(document).on('turbolinks:load', function() {
   $('#user-search-field').on("keyup", function() {
     AjaxSearch();
   });
-  $('.chat-group-form').on("click", '.adding-group-user__btn', function() {
+  $('.chat-group-form').on("click", '.add-group-user__btn', function() {
     var user = $(this).parent();
-    AddingUser(user);
+    var user_id   = user.data("id");
+    var user_name = user.data("name");
+    AddUser(user, user_id, user_name);
   });
   $('.chat-group-form').on("click", '.chat-group-user__btn', function() {
     var user = $(this).parent();
@@ -13,16 +15,17 @@ $(document).on('turbolinks:load', function() {
 });
 
 
-function buildAddingList(user) {
-  var list = `<div class="adding-group-user" data-id="${ user.id }" data-name="${ user.name }">
-                <p class="adding-group-user__name">${ user.name }</p>
-                <a class="adding-group-user__btn">追加</a>
+function buildAddList(user) {
+  var list = `<div class="add-group-user" data-id="${ user.id }" data-name="${ user.name }">
+                <p class="add-group-user__name">${ user.name }</p>
+                <a class="add-group-user__btn">追加</a>
               </div>`;
   return list;
 }
 
-function buildAddedList(id, name) {
-  var list = `<li class="chat-group-user"><input type="hidden" name="group[user_ids][]" value="${ id }" />
+function buildUserList(id, name) {
+  var list = `<li class="chat-group-user">
+              <input type="hidden" name="group[user_ids][]" value="${ id }" />
                 <p class="chat-group-user__name">${ name }</p>
                 <a class="chat-group-user__btn">削除</a>
               </li>`;
@@ -38,10 +41,10 @@ function AjaxSearch() {
     dataType: 'json'
   })
   .done(function(data) {
-    $(".adding-group-user").remove();
+    $(".add-group-user").remove();
     if (keyword.length !== 0) {
       $.each(data.users, function(i, user) {
-        var list = buildAddingList(user);
+        var list = buildAddList(user);
         $('#user-search-result').append(list);
       });
     }
@@ -52,11 +55,9 @@ function AjaxSearch() {
   return false;
 }
 
-function AddingUser(user) {
-  var id   = user.data("id");
-  var name = user.data("name");
+function AddUser(user, user_id, user_name) {
   user.remove();
-  var list = buildAddedList(id, name);
+  var list = buildUserList(user_id, user_name);
   $("#group-users").append(list);
 }
 
