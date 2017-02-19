@@ -21,7 +21,6 @@ function buildAddingList(user) {
 }
 
 function buildAddedList(id, name) {
-  console.log("hjhhhhh")
   var list = `<li class="chat-group-user" data-id="${id}"><input type="hidden" name="group[user_ids][]" value="${id}" />
                 <p class="chat-group-user__name">${name}</p>
                 <a class="chat-group-user__btn">削除</a>
