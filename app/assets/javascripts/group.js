@@ -2,20 +2,32 @@ $(document).on('turbolinks:load', function() {
   $('#user-search-field').on("keyup", function() {
     AjaxSearch();
   });
+  $('.chat-group-form').on("click", '.add-group-user__btn', function() {
+    var user = $(this).parent();
+    var user_id   = user.data("id");
+    var user_name = user.data("name");
+    AddUser(user, user_id, user_name);
+  });
+  $('.chat-group-form').on("click", '.chat-group-user__btn', function() {
+    var user = $(this).parent();
+    RemoveUser(user);
+  });
 });
 
-function buildAddingList(user) {
-  var list = `<div class="adding-group-user">
-                  <p class="adding-group-user__name">${ user.name }</p>
-                  <a class="adding-group-user__btn">追加</a>
+
+function buildAddList(user) {
+  var list = `<div class="add-group-user" data-id="${ user.id }" data-name="${ user.name }">
+                <p class="add-group-user__name">${ user.name }</p>
+                <a class="add-group-user__btn">追加</a>
               </div>`;
   return list;
 }
 
-function buildAddedList(user) {
+function buildUserList(id, name) {
   var list = `<li class="chat-group-user">
-                  <p class="chat-group-user__name">${ user.name }</p>
-                  <a class="chat-group-user__btn">削除</a>
+              <input type="hidden" name="group[user_ids][]" value="${ id }" />
+                <p class="chat-group-user__name">${ name }</p>
+                <a class="chat-group-user__btn">削除</a>
               </li>`;
   return list;
 }
@@ -29,10 +41,10 @@ function AjaxSearch() {
     dataType: 'json'
   })
   .done(function(data) {
-    $(".adding-group-user").remove();
+    $(".add-group-user").remove();
     if (keyword.length !== 0) {
       $.each(data.users, function(i, user) {
-        var list = buildAddingList(user);
+        var list = buildAddList(user);
         $('#user-search-result').append(list);
       });
     }
@@ -41,4 +53,14 @@ function AjaxSearch() {
     alert('エラーが発生しました。');
   });
   return false;
+}
+
+function AddUser(user, user_id, user_name) {
+  user.remove();
+  var list = buildUserList(user_id, user_name);
+  $("#group-users").append(list);
+}
+
+function RemoveUser(user){
+  user.remove();
 }
