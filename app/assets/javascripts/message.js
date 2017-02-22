@@ -7,26 +7,29 @@ $(document).on('turbolinks:load', function() {
 });
 
 function buildHTML(message) {
+  if (message.image) {
+    var image = `<img src="${ message.image }"/>`
+  } else {
+    var image = ''
+  };
   var html = `<li class="chat-message">
                 <div class="chat-message__header">
                   <p class="chat-message__user">${ message.name }</p>
                   <p class="chat-message__time">${ message.time }</p>
                 </div>
                 <p class="chat-message__body">${ message.text }</p>
+                ${ image }
               </li>`;
   return html;
 }
 
 function AjaxSend() {
-  var message = $('.chat-footer__body--textarea').val();
   $.ajax({
     type: 'POST',
     url: './messages',
-    data: {
-      message: {
-        text: message
-      }
-    },
+    data: new FormData($("#new-message").get(0)),
+    processData: false,
+    contentType: false,
     dataType: 'json'
   })
   .done(function(data) {
