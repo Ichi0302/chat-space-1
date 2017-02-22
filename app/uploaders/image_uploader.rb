@@ -1,15 +1,10 @@
 class ImageUploader < CarrierWave::Uploader::Base
+  include CarrierWave::RMagick
 
   storage :fog
 
-  include CarrierWave::RMagick
-
-  process :resize_to_limit => [500, 500]
-  process :convert => 'jpg'
-
-  version :thumb do
-    process :resize_to_limit => [700, 700]
-  end
+  process resize_to_limit: [400, 400]
+  process convert: 'jpg'
 
   def store_dir
     "uploads/photos/"
@@ -17,10 +12,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def extension_white_list
     %w(jpg jpeg gif png)
-  end
-
-  def filename
-    Time.now.strftime('%Y%m%d%H%M%S') + original_filename + '.jpg' if original_filename.present?
   end
 
 end
