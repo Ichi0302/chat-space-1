@@ -6,9 +6,6 @@ CarrierWave.configure do |config|
     region: 'us-east-1'
   }
 
-    case Rails.env
-    when 'production'
-        config.fog_directory  = 'chat-space-app'
-        config.asset_host = 'https://s3.amazonaws.com/chat-space-app'
-    end
+  config.fog_directory  = 'chat-space-app'
+  config.asset_host = 'https://s3.amazonaws.com/chat-space-app'
 end
