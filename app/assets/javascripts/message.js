@@ -8,10 +8,8 @@ $(document).on('turbolinks:load', function() {
 
 function buildHTML(message) {
   if (message.image.url) {
-    console.log(message.image);
     var image = `<img src="${ message.image.url }"/>`
   } else {
-    console.log('hey');
     var image = ''
   };
   var html = `<li class="chat-message">
