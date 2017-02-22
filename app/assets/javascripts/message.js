@@ -7,8 +7,8 @@ $(document).on('turbolinks:load', function() {
 });
 
 function buildHTML(message) {
-  if (message.image.url) {
-    var image = `<img src="${ message.image.url }"/>`
+  if (message.image) {
+    var image = `<img src="${ message.image }"/>`
   } else {
     var image = ''
   };
