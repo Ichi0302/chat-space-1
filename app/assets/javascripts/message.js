@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+  moveToBottom();
   $('#new-message').on("submit", function(e) {
     e.preventDefault();
     AjaxSend();
