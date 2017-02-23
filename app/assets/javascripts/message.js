@@ -59,8 +59,10 @@ function pageReload(){
       dataType: 'json'
     })
     .done(function(data) {
-      var html = buildHTML(data);
-      $('.chat-messages').append(html);
+      $.each(data.messages, function(i, message) {
+        var html = buildHTML(message);
+        $('.chat-messages').append(html);
+      })
     })
     .fail(function() {
       'window.location.reload()';

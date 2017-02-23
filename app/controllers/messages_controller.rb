@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_action :set_messages, only: [:index, :create]
 
   def index
-    @message = current_user.messages.new
+    @message = Message.new
       respond_to do |format|
         format.any
         format.json
