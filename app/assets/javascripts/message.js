@@ -27,7 +27,7 @@ function buildHTML(message) {
 
 function moveToBottom() {
   $('.chat-body').animate({
-    scrollTop: $('.chat-messages').height() + $('.chat-message').height()
+    scrollTop: $('.chat-messages').height()
   });
 }
 
@@ -52,21 +52,25 @@ function AjaxSend() {
 }
 
 function pageReload(){
-  setInterval(function() {
-    $.ajax({
-      type: 'GET',
-      url: './messages',
-      dataType: 'json'
-    })
-    .done(function(data) {
-      $.each(data.messages, function(i, message) {
-        var html = buildHTML(message);
+  if (window.location.href.match(/messages/)) {
+    setInterval(function() {
+      $.ajax({
+        type: 'GET',
+        url: './messages',
+        dataType: 'json'
+      })
+      .done(function(data) {
+        var number = data.messages.length;
+        var html = '';
+        for(var i = 0; i < number; i++) {
+          html += buildHTML(data.messages[i]);
+        };
         $('.chat-messages').append(html);
       })
-    })
-    .fail(function() {
-      'window.location.reload()';
-    })
-  },5000);
+      .fail(function() {
+        alert('メッセージを読み込めませんでした。');
+        'window.location.reload()';
+      })
+    },5000);
+  };
 }
-
