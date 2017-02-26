@@ -4,6 +4,7 @@ $(document).on('turbolinks:load', function() {
     AjaxSend();
     return false;
   });
+  pageReload();
 });
 
 function buildHTML(message) {
@@ -23,6 +24,12 @@ function buildHTML(message) {
   return html;
 }
 
+function moveToBottom() {
+  $('.chat-body').animate({
+    scrollTop: $('.chat-messages').height()
+  });
+}
+
 function AjaxSend() {
   $.ajax({
     type: 'POST',
@@ -36,8 +43,35 @@ function AjaxSend() {
     var html = buildHTML(data);
     $('.chat-messages').append(html);
     $('#new-message')[0].reset();
+    moveToBottom();
   })
   .fail(function() {
     alert('メッセージを入力してください。');
   });
+}
+
+function pageReload(){
+  if (window.location.href.match(/messages/)) {
+    var count = 5000;
+    setInterval(function() {
+      $.ajax({
+        type: 'GET',
+        url: './messages',
+        dataType: 'json'
+      })
+      .done(function(data) {
+        var old_num = $('.chat-message').length;
+        var new_num = data.messages.length;
+        var html = '';
+        for(var i = old_num; i < new_num; i++) {
+          html += buildHTML(data.messages[i]);
+        };
+        $('.chat-messages').append(html);
+        moveToBottom();
+      })
+      .fail(function() {
+        alert('メッセージを読み込めませんでした。');
+      })
+    },count);
+  };
 }
