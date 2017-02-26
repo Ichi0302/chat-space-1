@@ -53,6 +53,7 @@ function AjaxSend() {
 
 function pageReload(){
   if (window.location.href.match(/messages/)) {
+    var count = 5000;
     setInterval(function() {
       $.ajax({
         type: 'GET',
@@ -63,15 +64,14 @@ function pageReload(){
         var old_num = $('.chat-message').length
         var new_num = data.messages.length;
         var html = '';
-        for(var i = old_num; i < new_number; i++) {
+        for(var i = old_num; i < new_num; i++) {
           html += buildHTML(data.messages[i]);
         };
         $('.chat-messages').append(html);
       })
       .fail(function() {
         alert('メッセージを読み込めませんでした。');
-        'window.location.reload()';
       })
-    },5000);
+    },count);
   };
 }
