@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function() {
-  moveToBottom();
   $('#new-message').on("submit", function(e) {
     e.preventDefault();
     AjaxSend();
@@ -61,13 +60,14 @@ function pageReload(){
         dataType: 'json'
       })
       .done(function(data) {
-        var old_num = $('.chat-message').length
+        var old_num = $('.chat-message').length;
         var new_num = data.messages.length;
         var html = '';
         for(var i = old_num; i < new_num; i++) {
           html += buildHTML(data.messages[i]);
         };
         $('.chat-messages').append(html);
+        moveToBottom();
       })
       .fail(function() {
         alert('メッセージを読み込めませんでした。');
