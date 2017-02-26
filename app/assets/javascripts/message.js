@@ -60,9 +60,10 @@ function pageReload(){
         dataType: 'json'
       })
       .done(function(data) {
-        var number = data.messages.length;
+        var old_num = $('.chat-message').length
+        var new_num = data.messages.length;
         var html = '';
-        for(var i = 0; i < number; i++) {
+        for(var i = old_num; i < new_number; i++) {
           html += buildHTML(data.messages[i]);
         };
         $('.chat-messages').append(html);
