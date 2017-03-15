@@ -1,6 +1,6 @@
-#DB
+# DB
 
-##messagesテーブル
+## messagesテーブル
 | column   | type        | option         |
 |:---------|:------------|:---------------|
 | text     | text        | NULLNOT        |
@@ -8,23 +8,23 @@
 | group_id | references  |                |
 | user_id  | references  |                |
 
-###Association
+### Association
 belongs_to :user   
 belongs_to :group   
 
 ---
-##usersテーブル
+## usersテーブル
 | column   | type    | option         |
 |:---------|:--------|:---------------|
 | name     | string  | NULLNOT, INDEX |
 
-###Association
+### Association
 has_many :messages   
 has_many :groupusers   
 has_many :groups, through: :groupusers   
 
 ---
-##groupsテーブル
+## groupsテーブル
 | column   | type    | option         |
 |:---------|:--------|:---------------|
 | name     | string  | NULLNOT        |
@@ -35,12 +35,12 @@ has_many :groupusers
 has_many :users, through: :groupusers   
 
 ---
-##groupusersテーブル
+## groupusersテーブル
 | column   | type        | option         |
 |:---------|:------------|:---------------|
 | group_id | references  |                |
 | user_id  | references  |                |
 
-###Association
+### Association
 belongs_to :group   
 belongs_to :user   
