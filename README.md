@@ -29,7 +29,7 @@ has_many :groups, through: :groupusers
 |:---------|:--------|:---------------|
 | name     | string  | NULLNOT        |
 
-###Association
+### Association
 has_many :messages   
 has_many :groupusers   
 has_many :users, through: :groupusers   
