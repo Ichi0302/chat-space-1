@@ -16,19 +16,19 @@ $(document).on('turbolinks:load', function() {
 
 
 function buildAddList(user) {
-  var list = `<div class="add-group-user" data-id="${ user.id }" data-name="${ user.name }">
-                <p class="add-group-user__name">${ user.name }</p>
-                <a class="add-group-user__btn">追加</a>
-              </div>`;
+  var list = '<div class="add-group-user" data-id="'+ user.id +'" data-name="'+ user.name +'">'+
+               '<p class="add-group-user__name">'+ user.name +'</p>'+
+               '<a class="add-group-user__btn">追加'+'</a>'+
+              '</div>';
   return list;
 }
 
 function buildUserList(id, name) {
-  var list = `<li class="chat-group-user">
-              <input type="hidden" name="group[user_ids][]" value="${ id }" />
-                <p class="chat-group-user__name">${ name }</p>
-                <a class="chat-group-user__btn">削除</a>
-              </li>`;
+  var list = '<li class="chat-group-user">'+
+             '<input type="hidden" name="group[user_ids][]" value="'+ id +'" />'+
+               '<p class="chat-group-user__name">'+ name +'</p>'+
+               '<a class="chat-group-user__btn">削除'+'</a>'+
+             '</li>';
   return list;
 }
 

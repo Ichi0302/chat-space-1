@@ -9,18 +9,18 @@ $(document).on('turbolinks:load', function() {
 
 function buildHTML(message) {
   if (message.image) {
-    var image = `<img src="${ message.image }"/>`
+    var image = '<img src='+ message.image +'/>'
   } else {
     var image = ''
   };
-  var html = `<li class="chat-message">
-                <div class="chat-message__header">
-                  <p class="chat-message__user">${ message.name }</p>
-                  <p class="chat-message__time">${ message.time }</p>
-                </div>
-                <p class="chat-message__body">${ message.text }</p>
-                ${ image }
-              </li>`;
+  var html = '<li class="chat-message">'+
+               '<div class="chat-message__header">'+
+                 '<p class="chat-message__user">'+ message.name +'</p>'+
+                 '<p class="chat-message__time">'+ message.time +'</p>'+
+                '</div>'+
+                '<p class="chat-message__body">'+ message.text +'</p>'+
+                 image +
+              '</li>';
   return html;
 }
 
